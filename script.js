@@ -1,19 +1,22 @@
 //Get 2 variables for color and size to change and use in functions
-const currentColor="black";
-const currentSize=16;
+let currentColor="black";
+let currentSize=16;
 
 //Get parent for Sketch creation
 const grid = document.querySelector(".grid");
 
 // Get Variables to hold the Color-Buttons
-const white = document.querySelector(".white");
-const black = document.querySelector(".black");
-const red = document.querySelector(".red");
-const blue = document.querySelector(".blue");
-const yellow = document.querySelector(".yellow");
-const green = document.querySelector(".green");
-const violet = document.querySelector(".violet");
-const pink = document.querySelector(".pink");
+const newColor = document.querySelectorAll(".color");
+
+//Get CurrentColor on click of button
+for(let count = 0; count < newColor.length; count++) {
+  newColor[count].addEventListener("click",() => setNewColor(newColor[count].textContent));
+}
+
+function setNewColor(newColor) {
+  currentColor = newColor.toLowerCase();
+  console.log(currentColor);
+}
 
 //Get Erase-Button
 const erase = document.querySelector(".erase");
@@ -24,4 +27,22 @@ const newSize = document.querySelector(".newSize");
 //Get changeSize-Button
 const changeSize = document.querySelector(".changeSize");
 
+//Create Grid function taking newSize value -> changeSize is clicked
+function createGrid(newSize) {
+  grid.innerHTML = "";
 
+  grid.style.gridTemplateColumns = `repeat(§{newSize},1fr)`;
+  grid.style.gridTemplateRows = `repeat(§{newSize},1fr)`;
+
+  for(let count = 0; count < newSize; count++) {
+    const gridElement = document.createElement("div");
+    gridElement.classList.add("grid-Element");
+    //Change currentColor variable when mousedown on Element
+    //gridElement.addEventListener("mousedown",changeColor());
+    grid.appendChild(gridElement);
+  }
+}
+
+function changeColor() {
+  
+}
