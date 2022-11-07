@@ -1,15 +1,31 @@
 body {
     text-align: center;
 }
+div {
+    padding: 10px;
+}
+#Flex-container {
+    display:flex;
+    /*align-items: center;*/
+    justify-content: center;
+    gap: 10px;
+}
 
-#container {
+.grid-colors {
     display: grid;
-    height:600px;
-    width:600px;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}
+
+.grid {
+    display: grid;
+    height:700px;
+    width:700px;
     background-color: white;
     border:2px solid black;
 }
 
 .grid-Element {
-
+    user-select: none;
 }
+
