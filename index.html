@@ -12,15 +12,25 @@
 
 <body>
     <h1>Etch-A-Sketch</h1>
-    <div>
+    <main class="flex-container">
         <div id="Settings">
-            <input type="button" value="Change Color" class="btn changeColor">
-            <input type="text" class="size">
-            <input type="button" value="Change Size" class="btn changeSize">
-            <input type="button" value="ERASE" class="btn erase">
+            <div>
+                <h2>COLORS</h2>
+                <button class="btn white">WHITE</button>
+                <button class="btn black">BLACK</button>
+                <button class="btn red">RED</button>
+                <button class="btn blue">BLUE</button>
+                <button class="btn yellow">YELLOW</button>
+                <button class="btn green">GREEN</button>
+                <button class="btn violet">VIOLET</button>
+                <button class="btn pink">PINK</button>
+            </div>
+            <button class="btn erase">ERASE</button>
+            <input class="newSize" type="number" value="16" min="10" max="100">
+            <button class="changeSize">CHANGE SIZE</button>
         </div>
-        <div id="container"></div>
-    </div>
+        <div id="Grid"></div>
+    </main>
 </body>
 
 </html>
