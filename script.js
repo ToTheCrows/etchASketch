@@ -1,15 +1,17 @@
-const container = document.getElementById('container');
+const changeColor = document.querySelector(".changeColor");
+const newSize = document.querySelector(".size");
+const changeSize = document.querySelector(".changeSize");
+const container = document.getElementById("container");
 
-createGrid();
+createGrid(16);
 
-function createGrid() {
+changeSize.addEventListener("click",createGrid());
 
-    for (let count = 0; count < 16; count++) {
-        const grid = document.createElement('div');
-        grid.classList.add('grid');
-        container.appendChild(grid);
-        console.log('grid created');
-    }
-    const linebreak = document.createElement('/br');
+function createGrid(newSize) {
+
+    container.innerHTML="";
+
+    
+
 
 }
