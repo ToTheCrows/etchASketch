@@ -27,6 +27,9 @@ const newSize = document.querySelector(".newSize");
 //Get changeSize-Button
 const changeSize = document.querySelector(".changeSize");
 
+
+
+
 //Create Grid function taking newSize value -> changeSize is clicked
 function createGrid(newSize) {
   grid.innerHTML = "";
@@ -38,11 +41,16 @@ function createGrid(newSize) {
     const gridElement = document.createElement("div");
     gridElement.classList.add("grid-Element");
     //Change currentColor variable when mousedown on Element
-    //gridElement.addEventListener("mousedown",changeColor());
+    gridElement.addEventListener("mousedown",changeColor(gridElement));
     grid.appendChild(gridElement);
   }
+
 }
 
-function changeColor() {
-  
+function changeColor(gridElement) {
+  gridElement.style.backgroundColor = currentColor;
+  console.log("Should change color!");
 }
+
+//create Default grid
+createGrid(currentSize);
