@@ -1,6 +1,6 @@
 //Get 2 variables for color and size to change and use in functions
-let currentColor="black";
-let currentSize=16;
+let currentColor = "white";
+let currentSize = 16;
 
 //Get parent for Sketch creation
 const grid = document.querySelector(".grid");
@@ -9,8 +9,8 @@ const grid = document.querySelector(".grid");
 const newColor = document.querySelectorAll(".color");
 
 //Get CurrentColor on click of button
-for(let count = 0; count < newColor.length; count++) {
-  newColor[count].addEventListener("click",() => setNewColor(newColor[count].textContent));
+for (let count = 0; count < newColor.length; count++) {
+  newColor[count].addEventListener("click", () => setNewColor(newColor[count].textContent));
 }
 
 function setNewColor(newColor) {
@@ -34,22 +34,24 @@ const changeSize = document.querySelector(".changeSize");
 function createGrid(newSize) {
   grid.innerHTML = "";
 
-  grid.style.gridTemplateColumns = `repeat(§{newSize},1fr)`;
-  grid.style.gridTemplateRows = `repeat(§{newSize},1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${newSize},1fr)`;
+  grid.style.gridTemplateRows = `repeat(${newSize},1fr)`;
 
-  for(let count = 0; count < newSize; count++) {
+  for (let count = 0; count < Math.pow(newSize, 2); count++) {
     const gridElement = document.createElement("div");
     gridElement.classList.add("grid-Element");
     //Change currentColor variable when mousedown on Element
-    gridElement.addEventListener("mousedown",changeColor(gridElement));
     grid.appendChild(gridElement);
   }
+  let gridPixels = document.querySelectorAll(".grid-Element");
+  gridPixels.forEach(gridPixels => gridPixels.addEventListener("mouseover", changeColor));
 
 }
 
-function changeColor(gridElement) {
-  gridElement.style.backgroundColor = currentColor;
-  console.log("Should change color!");
+function changeColor(e) {
+  e.target.style.backgroundColor = currentColor;
+  e.target.classList.remove("grid-Element");
+  console.log("Should change color! ", currentColor);
 }
 
 //create Default grid

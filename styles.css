@@ -27,5 +27,6 @@ div {
 
 .grid-Element {
     user-select: none;
+    background-color: gray;
 }
 
