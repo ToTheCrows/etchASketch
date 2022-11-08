@@ -15,25 +15,23 @@ for (let count = 0; count < newColor.length; count++) {
 
 function setNewColor(newColor) {
   currentColor = newColor.toLowerCase();
-  console.log(currentColor);
 }
 
 //Get Erase-Button
 const erase = document.querySelector(".erase");
+//erase function (changing Background Color of all elements)
+function eraseGrid () {
+  let gridPixels = document.querySelectorAll(".grid-Element");
+  gridPixels.forEach(gridPixels => gridPixels.style.backgroundColor = "gray");
 
-//Get size-value
-const newSize = document.querySelector(".newSize");
+}
 
-//Get changeSize-Button
-const changeSize = document.querySelector(".changeSize");
-
-
-
+erase.addEventListener("click",eraseGrid);
 
 //Create Grid function taking newSize value -> changeSize is clicked
 function createGrid(newSize) {
   grid.innerHTML = "";
-
+  console.log(newSize);
   grid.style.gridTemplateColumns = `repeat(${newSize},1fr)`;
   grid.style.gridTemplateRows = `repeat(${newSize},1fr)`;
 
@@ -48,11 +46,23 @@ function createGrid(newSize) {
 
 }
 
+//change current Color during mouseover with event.target
 function changeColor(e) {
   e.target.style.backgroundColor = currentColor;
-  e.target.classList.remove("grid-Element");
-  console.log("Should change color! ", currentColor);
 }
 
 //create Default grid
 createGrid(currentSize);
+
+//Get changeSize-Button
+const changeSize = document.querySelector(".changeSize");
+
+//changeSize function and Event Listener
+function setNewSize() {
+  console.log(currentSize);
+  currentSize = document.querySelector(".newSize").value;
+  console.log(currentSize);
+  createGrid(currentSize);
+}
+
+changeSize.addEventListener("click",setNewSize);
